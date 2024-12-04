@@ -85,6 +85,12 @@ Active learning aims to reduce the number of training instances. In contrast to 
 [https://gitlab.univ-lille.fr/julien.boelaert/activetigger](https://gitlab.univ-lille.fr/julien.boelaert/activetigger)
 
 
+## Quelques usages :
+
+- Produire un classifieur pour un très grand corpus
+- Récupérer uniquement certains éléments dans un grand corpus
+- Accélérer le codage exhaustif d'un corpus (avec la boucle AL)
+
 ## Depuis 2024 : refactorisation
 
 Consolider l'architecture
