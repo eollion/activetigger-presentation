@@ -1,0 +1,162 @@
+---
+title: "Active Tigger"
+subtitle: "Accélérer la classification de données textuelles"
+author: "Émilien Schultz - Étienne Ollion - Julien Boelaert"
+format: 
+    revealjs:
+        slide-number: true
+        fontsize: 25pt
+---
+
+
+## Constat de départ
+
+- Croissance des pratiques numériques en sciences sociales
+    - Importance d'outiller / clarifier ces dimensions CSS
+- Arrivée des modèles de language dans la représentation/prédiction
+    - Transformers (BERT en 2018)
+- Volume croissant de données textuelles
+    - Coût important (humain/argent) pour produire les annotations
+    - Notamment pour les corpus déséquilibrés (événements rares)
+
+## (update) L'explosion des usages avec les LLM
+
+- Multiplication des modèles pré-entraînés & de leurs usages
+    - Notamment modèles fondationnels multi-tâches
+- De nouveaux usages impliquant des API / LLM comme service
+
+## Lien avec "le chercheur augmenté"
+
+- Etendre les pratiques actuelles sur des corpus plus larges
+- Déléguer les tâches automatisables
+- Incorporer dans des outils les bonnes pratiques
+
+**Objectif** : Fiabiliser et faciliter l'annotation textuelle
+
+## Active Tigger : logiciel open source pour la recherche en SHS
+
+- Tâches principales :
+    - **Faciliter l'annotation multi-classes de corpus textuels**
+    - **Accélérer cette annotation sur de grands corpus textuels**
+- Tâches secondaires :
+    - Explorer un corpus textuel
+    - Collaborer sur l'annotation
+    - Faciliter la stabilisation des schèmes de codage
+    - Accélérer la constitution de sous-corpus en situation d'abondance  de données
+- Tâches du future :
+    - Intégrer les modèles génératifs
+
+## Valeurs structurantes du projet
+
+- Open source & Open Science
+- Logiciel scientifique
+- Transparent / reproductible
+- Equilibre entre guider le jugement et la modularité
+- Evolutif / plateforme
+
+*« models and software are entangled in science, and software does critical work that models cannot perform on their own » [Hocquet et al., 2024, p. 465]*
+
+## Choix techniques
+
+- Se concentrer sur quelques tâches
+- Une trajectoire principale avec de l'[active learning](https://en.wikipedia.org/wiki/Active_learning_(machine_learning))
+    - Accélérer l'annotation de certains éléments cibles (boucle d'AL)
+    - Pour ensuite fine-tuner un modèle BERT
+    - Etendre l'annotation au corpus entier
+
+::: {.callout-note title="Active Learning"}
+
+Active learning aims to reduce the number of training instances. In contrast to filtering, it is applied during data collection (instead of after) to only annotate the most helpful or useful instances for training (Settles, 2012; Ren et al., 2021b). i.e. to assess usefulness of an instance without knowing its actual label, one can use the model uncertainty—assuming that labeling instances with the highest uncertainty is most helpful
+
+:::
+
+
+## Précisions 
+
+- Plongement des textes avec SBERT / autre
+- Un AL adapté : 
+    - Modèle frugal (ML classique) avec réintégration des prédictions
+    - Petits batch
+
+## Implémetation : premier prototype RShiny en 2022
+
+![ActiveTigger](img/atr.png)
+
+[https://gitlab.univ-lille.fr/julien.boelaert/activetigger](https://gitlab.univ-lille.fr/julien.boelaert/activetigger)
+
+
+## Depuis 2024 : refactorisation
+
+Consolider l'architecture
+
+- Ajouter du vrai multiutilisateur
+- Avoir un backend en Python
+- Aller au-delà du prototypage
+
+::: {.callout-note title="Refactorisation"}
+
+- Python pour le backend (FASTAPI)
+- Client dédié (React)
+
+:::
+
+## Démonstration
+
+
+- Une instance sur nos serveurs
+- Un jeu de données
+    - Abstracts de journaux sociologie
+    - Article à paraître d'Étienne & Julien sur le traitement de la question de genre
+
+[**go go démo**](https://emilienschultz.github.io/activetiggers)
+
+
+## Les évolutions actuelles et futures
+
+- Intégrer au mieux les bonnes pratiques de constitution de corpus (Klie et al., 2024)
+- D'autres principes d'Active learning ? (i.e. batch diversity)
+- Connecteurs avec les LLM as a service
+
+## Comment tester ?
+
+- Possibilité de tester
+    - Me demander un accès à emilien.schultz@ensae.fr
+- Code ouvert - mais encore en développement
+
+## Comment contribuer ?
+
+- Ouvrir des issues
+- Entrer dans le  code
+    - Possibilité d'échanger
+
+## Quelques références
+
+- Ein-Dor, Liat, Alon Halfon, Ariel Gera, Eyal Shnarch, Lena Dankin, Leshem Choshen, Marina Danilevsky, Ranit Aharonov, Yoav Katz, et Noam Slonim. « Active Learning for BERT: An Empirical Study ». In Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP), 7949‑62. Online: Association for Computational Linguistics, 2020. https://doi.org/10.18653/v1/2020.emnlp-main.638.
+- Zhang, Zhisong, Emma Strubell, et Eduard Hovy. « A Survey of Active Learning for Natural Language Processing ». arXiv, 3 février 2023. http://arxiv.org/abs/2210.10109/
+- Klie, Jan-Christoph, Richard Eckart De Castilho, et Iryna Gurevych. « Analyzing Dataset Annotation Quality Management in the Wild ». Computational Linguistics 50, nᵒ 3 (1 septembre 2024): 817‑66. https://doi.org/10.1162/coli_a_00516.
+
+
+## Contributors
+
+www.css.cnrs.fr 
+
+- Emma Bonutti
+- Léo Mignot
+
+Un discord bientôt
+
+
+<!-- 
+
+Keywords
+- multiclass classification
+- active learning
+- open source
+- open science
+
+(situations in which unlabeled data is abundant but manual labeling is expensive)
+
+*En chantier : intégrer les modèles génératifs*
+
+Many text classification tasks face a severe class imbalance problem that limits the ability to train high-performance models.
+-->
