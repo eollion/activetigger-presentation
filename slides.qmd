@@ -1,7 +1,7 @@
 ---
 title: "Active Tigger"
 subtitle: "Accélérer la classification de données textuelles"
-author: "Émilien Schultz - Étienne Ollion - Julien Boelaert"
+author: "Émilien Schultz - Julien Boelaert - Étienne Ollion"
 format: 
     revealjs:
         slide-number: true
@@ -11,24 +11,24 @@ format:
 
 ## Constat de départ
 
-- Croissance des pratiques numériques en sciences sociales
-    - Importance d'outiller / clarifier ces dimensions CSS
+- Croissance des pratiques numériques en sciences sociales [#EOj'enleverais ces deux lignes pour aller droit au but]
+    - Importance d'outiller / clarifier ces dimensions CSS [#EOj'enleverais ces deux lignes pour aller droit au but]
 - Arrivée des modèles de language dans la représentation/prédiction
-    - Transformers (BERT en 2018)
-- Volume croissant de données textuelles
+    - Transformers, avec 2 usages = zero-shot, et fine tuned
+- Dans le cas du fine-tuning, nécessité d'annoter efficacement
     - Coût important (humain/argent) pour produire les annotations
-    - Notamment pour les corpus déséquilibrés (événements rares)
+    - Notamment pour les corpus déséquilibrés (événements rares), fréquents en SHS
 
-## (update) L'explosion des usages avec les LLM
+## (update) L'explosion des usages avec les LLM (#EO: slide nécessaire?)
 
 - Multiplication des modèles pré-entraînés & de leurs usages
     - Notamment modèles fondationnels multi-tâches
 - De nouveaux usages impliquant des API / LLM comme service
 
-## Lien avec "le chercheur augmenté"
-
-- Etendre les pratiques actuelles sur des corpus plus larges
-- Déléguer les tâches automatisables
+## Objectif : s'augmenter 
+REF: Do, Ollion & Shen 2022
+- Etendre l'annotation manuelle à un corpus entier
+- Déléguer les tâches automatisables à une machine
 - Incorporer dans des outils les bonnes pratiques
 
 **Objectif** : Fiabiliser et faciliter l'annotation textuelle
@@ -43,14 +43,14 @@ format:
     - Collaborer sur l'annotation
     - Faciliter la stabilisation des schèmes de codage
     - Accélérer la constitution de sous-corpus en situation d'abondance  de données
-- Tâches du future :
+- Tâches du futur :
     - Intégrer les modèles génératifs
 
 ## Valeurs structurantes du projet
 
 - Open source & Open Science
 - Logiciel scientifique
-- Transparent / reproductible
+- Codage transparent / reproductible
 - Equilibre entre guider le jugement et la modularité
 - Evolutif / plateforme
 
@@ -61,7 +61,7 @@ format:
 - Se concentrer sur quelques tâches
 - Une trajectoire principale avec de l'[active learning](https://en.wikipedia.org/wiki/Active_learning_(machine_learning))
     - Accélérer l'annotation de certains éléments cibles (boucle d'AL)
-    - Pour ensuite fine-tuner un modèle BERT
+    - Pour ensuite fine-tuner un modèle encoder (MLM)
     - Etendre l'annotation au corpus entier
 
 ::: {.callout-note title="Active Learning"}
@@ -78,7 +78,7 @@ Active learning aims to reduce the number of training instances. In contrast to 
     - Modèle frugal (ML classique) avec réintégration des prédictions
     - Petits batch
 
-## Implémetation : premier prototype RShiny en 2022
+## Implémentation : premier prototype RShiny en 2022
 
 ![ActiveTigger](img/atr.png)
 
@@ -112,7 +112,7 @@ Consolider l'architecture
 - Une instance sur nos serveurs
 - Un jeu de données
     - Abstracts de journaux sociologie
-    - Article à paraître d'Étienne & Julien sur le traitement de la question de genre
+    - Article collectif sur la place du genre dans les sciences sociales
 
 [**go go démo**](https://emilienschultz.github.io/activetiggers)
 
